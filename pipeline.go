@@ -34,16 +34,17 @@ func init() {
 }
 
 type PipelineRun struct {
-	Job       *Job
-	Base      string
-	URLs      map[string]map[string]string `json:"_links"`
-	ID        string
-	Name      string
-	Status    string
-	StartTime int64 `json:"startTimeMillis"`
-	EndTime   int64 `json:"endTimeMillis"`
-	Duration  int64 `json:"durationMillis"`
-	Stages    []PipelineNode
+	Job           *Job
+	Base          string
+	URLs          map[string]map[string]string `json:"_links"`
+	ID            string
+	Name          string
+	Status        string
+	StartTime     int64 `json:"startTimeMillis"`
+	EndTime       int64 `json:"endTimeMillis"`
+	Duration      int64 `json:"durationMillis"`
+	PauseDuration int64 `json:"pauseDurationMillis,omitempty"`
+	Stages        []PipelineNode
 }
 
 type PipelineNode struct {
@@ -55,6 +56,7 @@ type PipelineNode struct {
 	Status         string
 	StartTime      int64 `json:"startTimeMillis"`
 	Duration       int64 `json:"durationMillis"`
+	PauseDuration  int64 `json:"pauseDurationMillis,omitempty"`
 	StageFlowNodes []PipelineNode
 	ParentNodes    []int64
 }
